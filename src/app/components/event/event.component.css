@@ -1,0 +1,14 @@
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 204px;
+}
+
+.img-hover{
+transition: transform 0.3s ease;
+}
+
+.img-hover:hover{
+  opacity: 0.75;
+}

@@ -1,0 +1,101 @@
+<div style="margin-top: 100px;">
+  <div class="container">
+    <div class="row">
+      <!-- Columna de Imagen -->
+      <div class="col-md-7">
+          <div class="card mb-3">
+                <img [src]="[event()?.image]" class="card-img-top" alt="{{event()?.title}}">
+          </div>
+          <div class="card my-3">
+                <div class="card-body">
+                  <div class="fs-1 fw-bold">{{event()?.title}}</div>
+                  <div style="text-align: justify;">{{event()?.description}}</div>
+                </div>
+          </div>
+      </div>
+      <!-- Columna de Texto -->
+      <div class="col-md-5">
+        <!-- Card compra -->
+        <div class="card">
+          <div class="card-body">
+            <div class="fw-bold fs-1">{{event()?.title}}</div>
+            <div class="card-text">
+                  <div class="row pt-3">
+                      <div class="col-md-3 fw-bold">Fecha:</div>
+                      <div class="col">{{event()?.date | date:'dd MMMM, yyyy'}}</div>
+                  </div>
+                  <div class="row ">
+                      <div class="col-md-3 fw-bold">Horario:</div>
+                      <div class="col">{{event()?.time}}</div>
+                  </div>
+                  <div class="py-2 fw-bold">Entradas</div>
+                  <div class="row">
+                      <div class="col-md-8 fw-bold">General:</div>
+                      <div class="col-md-4">
+                        <button class="btn btn-success px-0 py-0" style=" width: 25px; height: 25px;"
+                          (click)="decrement()">-</button>
+                        <span class="mx-2">{{cantTicket()}}</span>
+                        <button class="btn btn-success px-0 py-0" style="width: 25px; height: 25px;"
+                          (click)="increment()">+</button>
+                      </div>
+                  </div>
+                  <div class="form-check px-4 py-2 lh-1 fw-lighter">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Te informamos que tus datos personales seran compartidos con el organizador del evento
+                      </label>
+                  </div>
+                  <p>* Apto solo para mayores de 18 años</p>
+
+              @if(showText()){
+              <div class="row pb-3">
+                <div class="col-md-8">
+                  <div class="fw-bold">Total ({{cantTicket()}}):</div>
+                </div>
+                <div class="col-md-4">
+                  {{total() | currency:'S/ ':'symbol':'1.0'}}
+                </div>
+              </div>
+              }
+              <div class="text-center">
+                <button class="btn btn-success btn-block" style="width: 80%;">comprar </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- card ubicacion -->
+        <div class="card my-3">
+          <div class="card-body">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+            </svg>
+            <strong>Ubicacion: </strong>{{event()?.location}}
+          </div>
+        </div>
+        <!-- card organizacion -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-people-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                </svg>
+                <strong>Organiza: </strong>{{event()?.organizer.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <strong>RUC: </strong>{{event()?.organizer.ruc}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

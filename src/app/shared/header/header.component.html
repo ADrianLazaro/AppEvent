@@ -1,0 +1,113 @@
+<header class="w-100 d-flex flex-wrap align-items-center navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+     <!-- Logo a la izquierda -->
+     <a class="navbar-brand" href="#">
+       <img src="" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+       Mi Aplicación
+     </a>
+
+     <!-- Botón de colapso para pantallas pequeñas -->
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+
+     <!-- Contenedor de navegación -->
+     <div class="collapse navbar-collapse" id="navbarNav">
+       <!-- Buscador en el centro -->
+       <form class="d-flex ms-auto">
+         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+         <button class="btn btn-outline-success" type="submit">Buscar</button>
+       </form>
+
+       <!-- Botones a la derecha -->
+       <div class="navbar-nav ms-auto">
+        <!-- <button type="button" class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Iniciar sesión</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" >Registrarse</button> -->
+        <button (click)="signIn()">Sign in</button>
+        <br/>
+        <button (click)="signOut()">Sign out</button>
+       </div>
+     </div>
+  </div>
+</header>
+
+
+  <!-- MODAL -->
+ <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+          <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Ingresar en tu cuenta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>¿No tienes una cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2">Registrate ahora</a></p>
+                <form  (ngSubmit)="onSubmit(email, password)">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">E-Mail</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="Ingresa tu E-Mail">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Ingresa tu Contraseña">
+                  </div>
+                  <div class="mb-3">
+                    <p> <a href="">¿Olvidaste la contraseña?</a></p>
+                  </div>
+                  <div class="modal-footer border-0 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success" style="width: 50%;">Ingresar</button>
+                  </div>
+                </form>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Crear cuenta</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <p>¿Ya tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Ingresa aquí</a></p>
+         <form>
+           <div class="mb-3">
+             <label for="email2" class="form-label">E-Mail</label>
+             <input type="email" class="form-control" id="email2" placeholder="Ingresa tu E-Mail">
+           </div>
+           <div class="mb-3">
+             <label for="password2" class="form-label">Contraseña</label>
+             <input type="password" class="form-control" id="password2" placeholder="Ingresa tu Contraseña">
+           </div>
+           <div class="mb-3">
+             <label for="confirmPassword2" class="form-label">Confirmar Contraseña</label>
+             <input type="password" class="form-control" id="confirmPassword2" placeholder="Confirma tu Contraseña">
+           </div>
+           <div class="row mb-3">
+             <div class="col">
+               <label for="firstName" class="form-label">Nombre</label>
+               <input type="text" class="form-control" id="firstName" placeholder="Ingresa tu Nombre">
+             </div>
+             <div class="col">
+               <label for="lastName" class="form-label">Apellido</label>
+               <input type="text" class="form-control" id="lastName" placeholder="Ingresa tu Apellido">
+             </div>
+           </div>
+           <div class="mb-3">
+             <label for="phone" class="form-label">Teléfono</label>
+             <input type="tel" class="form-control" id="phone" placeholder="Ingresa tu Teléfono">
+           </div>
+           <div class="mb-3 form-check">
+             <input type="checkbox" class="form-check-input" id="policyCheck">
+             <label class="form-check-label" for="policyCheck">Acepto la Política de Compra, Términos de Uso y Política de Cookies de EasyTicket; y, declaro que he sido informado sobre su Política de Privacidad, por lo tanto, autorizo que mis datos sean tratados de acuerdo con la misma.</label>
+           </div>
+         </form>
+       </div>
+       <div class="modal-footer border-0 d-flex justify-content-center">
+         <button type="button" class="btn btn-success" style="width: 50%;">Ingresar</button>
+       </div>
+     </div>
+  </div>
+ </div>
