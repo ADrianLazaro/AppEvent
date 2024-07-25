@@ -5,6 +5,7 @@ import { User } from '../../models/user.model';
 
 ////
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import type { UserInfoResponse } from '@logto/js';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +15,22 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit{
+  // isAuthenticated = false;
+  // userData?: UserInfoResponse;
+  // idToken?: string;
+  // accessToken?: string;
+  // constructor(public oidcSecurityService: OidcSecurityService) {}
+  ///
   private userService=inject(UserService);
   userLogin = signal<User|any>(null);
   email: string='';
   password: string='';
 
-
   onSubmit(email: string, password: string) {
-    console.log(email,password);
     this.userService.login(email, password).subscribe(
        data => {
          console.log('Inicio de sesión exitoso:', data);
+         this.userService.userLogin=data;
        },
        error => {
          console.error('Error en el inicio de sesión:', error);
@@ -33,19 +39,25 @@ export class HeaderComponent implements OnInit{
    }
 
    ///
+   ngOnInit(): void {
+  //   this.oidcSecurityService
+  //     .checkAuth()
+  //     .subscribe(({ isAuthenticated, userData, idToken, accessToken }) => {
+  //       console.log('app authenticated', isAuthenticated, userData);
+  //       this.isAuthenticated = isAuthenticated;
+  //       this.userData = userData;
+  //       this.idToken = idToken;
+  //       this.accessToken = accessToken;
+  //     });
+    }
 
-  constructor(public oidcSecurityService: OidcSecurityService) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  // signIn() {
+  //   this.oidcSecurityService.authorize();
+  // }
 
-  signIn() {
-    this.oidcSecurityService.authorize();
-  }
-
-  signOut() {
-    this.oidcSecurityService.logoff().subscribe((result) => {
-      console.log('app sign-out', result);
-    });
-  }
+  // signOut() {
+  //   this.oidcSecurityService.logoff().subscribe((result) => {
+  //     console.log('app sign-out', result);
+  //   });
+  // }
 }

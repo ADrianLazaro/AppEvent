@@ -14,8 +14,8 @@ export const appConfig: ApplicationConfig = {
     provideAuth({
       config: buildAngularAuthConfig({
         endpoint: 'https://rv9i08.logto.app/',
-        appId: 'lbw1hev6vhdgak2c3s9go',
-        redirectUri: 'http://localhost:4200/logto/callback',
+        appId: 'jb7ib4dag9ulysf8t7nfj',
+        redirectUri: 'http://localhost:4200/callback',
         postLogoutRedirectUri: 'http://localhost:4200',
       }),
     }),

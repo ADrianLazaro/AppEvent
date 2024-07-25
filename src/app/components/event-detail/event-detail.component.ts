@@ -4,6 +4,8 @@ import { Component, computed, inject, Input, signal } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 import { EventComponent } from '../event/event.component';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-event-detail',
@@ -16,14 +18,19 @@ export class EventDetailComponent {
 
   @Input() id?:string;
   event= signal<Event|any>(null);
+  userLogin=signal<User|null>(null);
   private eventService=inject(EventService);
+  private userService = inject(UserService);
 
   cantTicket= signal(0);
   showText = signal(false);
   total = signal(0);
   constructor(){
+
   }
   ngOnInit(){
+    this.userLogin.set(this.userService.getUserLogin());
+    console.log(this.userLogin,"hoasdasd");
     if(this.id){
       this.eventService.getOne(this.id).subscribe({
         next:(ev)=>{
@@ -31,7 +38,7 @@ export class EventDetailComponent {
         }
       })
     }
-    console.log(this.event);
+
   }
 
   decrement(){
@@ -57,6 +64,9 @@ export class EventDetailComponent {
     }
   }
 
+  BuyTicket(){
+    console.log(this.userLogin);
+  }
 
 
 }
